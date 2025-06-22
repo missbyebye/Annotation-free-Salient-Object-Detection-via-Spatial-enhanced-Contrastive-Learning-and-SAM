@@ -17,6 +17,7 @@ from base.framework_factory import load_framework
 
 def test_model(model, test_sets, config, epoch=None, saver=None):
     model.eval()
+
     if epoch is not None:
         weight_path = os.path.join(config['weight_path'], '{}_{}_{}-vit_b-50.pth'.format(config['model_name'], config['sub'], epoch))
         torch.save(model.state_dict(), weight_path)

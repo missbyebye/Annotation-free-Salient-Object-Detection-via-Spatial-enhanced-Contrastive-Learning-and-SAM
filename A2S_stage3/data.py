@@ -90,7 +90,7 @@ def get_image_list(name, config, phase):
                 print(f"Removing missing image: {images_image}")
                 del gts[i]  # 删除当前项
 
-    else:
+    elif phase == 'test':
         '''这是测试集部分'''
         image_root = '/data/dataset/dataset_test/DUTS-TE/DUTS-TE-Image'
         gt_root = '/data/dataset/dataset_test/DUTS-TE/DUTS-TE-Mask'
@@ -115,25 +115,27 @@ def get_image_list(name, config, phase):
                 # 如果图像文件不存在，从 gts 列表中删除对应项
                 print(f"Removing missing image: {images_image}")
                 del gts[i]  # 删除当前项
-
-        '''这是预测训练集部分'''
-
-        # image_root = '/data/dataset/DUTS-TR/DUTS-TR-Image'
-        # gt_root = '/data/dataset/DUTS-TR/DUTS-TR-Image'
-        #
-        # gts = sorted([os.path.join(gt_root, f) for f in os.listdir(gt_root) if f.endswith('.jpg')])
-        # images = []
-        # for gt in gts:
-        #
-        #     image_name = gt.split('/')[-1]
-        #
-        #     image = image_root + '/' + image_name
-        #     images.append(image)
-
-        '''这是预测训练集部分'''
-
         print(images[:5])
         print(gts[:5])
+        '''这是测试集部分'''
+    else:
+        '''这是预测训练集部分'''
+
+        image_root = '/data/dataset/DUTS-TR/DUTS-TR-Image'
+        gt_root = '/data/dataset/DUTS-TR/DUTS-TR-Image'
+        
+        gts = sorted([os.path.join(gt_root, f) for f in os.listdir(gt_root) if f.endswith('.jpg')])
+        images = []
+        for gt in gts:
+        
+            image_name = gt.split('/')[-1]
+        
+            image = image_root + '/' + image_name
+            images.append(image)
+        print(images[:5])
+        print(gts[:5])
+        '''这是预测训练集部分'''
+        
     return images, gts
 
 def get_loader(config):

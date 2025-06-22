@@ -32,15 +32,6 @@ def normalize_pil(pre, gt):
         pre = (pre - min_pre) / (max_pre - min_pre)
     return pre, gt
 
-# def cal_iou(p1, p2):
-#     bp1 = (p1 > 0.5)
-#     bp2 = (p2 > 0.5)
-#
-#     inter = np.sum(bp1 * bp2)
-#     union = np.sum(((bp1 + bp2) > 0).astype(np.int8))
-#     iou = inter * 1. / union
-#     # print(inter, union, iou)
-#     return iou
 
 
 def cal_iou(p1, p2, threshold=128):
