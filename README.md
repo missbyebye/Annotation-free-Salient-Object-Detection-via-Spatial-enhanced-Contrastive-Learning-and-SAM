@@ -74,7 +74,7 @@ In './data.py', modify the 'gt_root'
 
 In'/test.py',modify the 'weight_path','save_folder' and 'list_file'
 
-Perform initial SOD model training:
+* Perform initial SOD model training:
 
 ```
 python3 train_stage2.py cornet --gpus=1
@@ -86,7 +86,7 @@ Execute the test command as follows：
 python3 test.py cornet --weight=/data/A2S-stage3/weight/cornet/resnet/base/cornet_base_20_SAMall-iou-80.pth --gpus=1 --save
 ```
 
-In'./data.py',odify 'self.images, self.gts = get_image_list(name, config, 'test')' to 'self.images, self.gts = get_image_list(name, config, 'test_predict')'
+In'./data.py',modify 'self.images, self.gts = get_image_list(name, config, 'test')' to 'self.images, self.gts = get_image_list(name, config, 'test_predict')'
 
 Then predicte the training set images ：
 
@@ -94,7 +94,7 @@ Then predicte the training set images ：
 python3 test.py cornet --weight=/data/A2S-stage3/weight/cornet/resnet/base/cornet_base_20_SAMall-iou-80.pth --gpus=1 --save
 ```
 
-Screening of A2S predicted labels and sam reliable labels :
+* Screening of A2S predicted labels and sam reliable labels :
 
 ```
 cd SAM_stage2
@@ -104,13 +104,13 @@ cd SAM_stage2
 python3 similarity_reliable_stage3.py
 ```
 
-Screening of A2S predicted labels and sam unreliable labels :
+* Screening of A2S predicted labels and sam unreliable labels :
 
 ```
 python3 similarity_delete_stage3.py
 ```
 
-A2S retraining
+* A2S retraining
 
 In'./A2S_stage3/data.py', modify the  'gt_root' , 'gt_root' is the combination of 'gt_root1' and 'gt_root2'
 
